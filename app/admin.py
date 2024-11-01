@@ -6,3 +6,5 @@ from .models import Course, Lesson, Comment
 admin.site.register(Course)
 admin.site.register(Comment)
 admin.site.register(Lesson)
+
+
