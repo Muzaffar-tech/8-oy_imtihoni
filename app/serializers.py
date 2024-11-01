@@ -1,7 +1,12 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 
-from .models import Course, Lesson, Comment
+from .models import Course, Lesson, Comment, Like
+
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Like
+        fields = "__all__"
 
 class CourseSerializer(serializers.ModelSerializer):
     '''

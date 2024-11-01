@@ -8,8 +8,8 @@ from django.contrib.auth.models import User
 
 
 
-from .models import Course, Lesson, Comment
-from .serializers import CourseSerializer, LessonSerializer, CommentSerializer, UserRegistrationSerializer
+from .models import Course, Lesson, Comment, Like
+from .serializers import CourseSerializer, LessonSerializer, CommentSerializer, UserRegistrationSerializer, LikeSerializer
 
 # Create your views here.
 
@@ -45,6 +45,12 @@ class CourseApiViewSet(ModelViewSet):
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     ordering_fields = ['pk', 'start_date', 'name']
     search_fields = ['name', 'description']
+
+class LikeApiViewSet(ModelViewSet):
+    serializer_class = LikeSerializer
+    queryset = Like.objects.all()
+    permission_classes = [IsAuthenticated, DjangoModelPermissions]
+
 
 
 
